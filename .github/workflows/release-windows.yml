@@ -1,15 +1,15 @@
 name: release-windows
 
 on:
+  # Manual only — keep it explicit so a tag push doesn't kick off CI before
+  # the developer has finished local Mac testing.
+  # Trigger via `npm run release:win` or the Actions UI.
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Release tag to attach artifacts to (must already exist, e.g. v1.3.3)'
+        description: 'Release tag to attach artifacts to (will be created if missing, e.g. v1.3.3)'
         required: true
         default: 'v1.3.3'
-  push:
-    tags:
-      - 'v*'
 
 jobs:
   build:

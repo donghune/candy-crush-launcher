@@ -17,6 +17,8 @@
     "dist:win": "npm run dist -- -w",
     "dist:mac": "npm run dist -- -m",
     "dist:linux": "npm run dist -- -l",
+    "test:mac": "electron-builder build -m --publish never",
+    "release:win": "gh workflow run release-windows.yml --ref master -f tag=v$(node -p \"require('./package.json').version\")",
     "lint": "eslint ."
   },
   "engines": {
