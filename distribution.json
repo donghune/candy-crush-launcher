@@ -88,6 +88,15 @@
                 "size": 1505269,
                 "url": "https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.0+mixin.0.8.7/sponge-mixin-0.17.0+mixin.0.8.7.jar"
               }
+            },
+            {
+              "id": "fabric-loader-0.18.5-1.21.4",
+              "name": "Fabric Loader Version Manifest",
+              "type": "VersionManifest",
+              "artifact": {
+                "size": 2847,
+                "url": "https://raw.githubusercontent.com/donghune/candy-crush-launcher/master/fabric-loader-0.18.5-1.21.4.json"
+              }
             }
           ]
         },
