@@ -3989,18 +3989,21 @@ input:checked + .toggleSwitchSlider:before {
     justify-content: center;
 }
 
-/* Stationary image for the spinner. */
+/* Stationary loading image — Candy Crush composite (1920×1080), shown wider. */
 #loadCenterImage {
     position: absolute;
-    width: 277px;
+    width: 640px;
     height: auto;
 }
 
-/* Rotating image for the spinner. */
+/* Rotating Helios text logo — hidden in favor of the composite center image. */
 #loadSpinnerImage {
-    width: 280px;
-    height: auto;
-    z-index: 400;
+    display: none !important;
+}
+
+/* Top-left circular seal on landing — hidden per Candy Crush branding. */
+#image_seal_container {
+    display: none !important;
 }
 
 /* Rotating animation for the spinner. */
