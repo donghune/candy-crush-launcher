@@ -163,9 +163,9 @@
           "name": "Candy Crush Mod",
           "type": "FabricMod",
           "artifact": {
-            "size": 74766,
-            "MD5": "ca421d963cfe74e09faa400ae9ba8fce",
-            "url": "https://github.com/donghune/candy-crush-launcher/releases/download/v1.3.3/candy_crush-1.0-SNAPSHOT.jar"
+            "size": 75511,
+            "MD5": "20d2f2bea850412f64d1330310864c29",
+            "url": "https://github.com/donghune/candy-crush-launcher/releases/download/v1.3.5/candy_crush-1.0-SNAPSHOT.jar"
           }
         },
         {
