@@ -176,6 +176,15 @@
             "size": 181737,
             "url": "https://cdn.modrinth.com/data/qyulnpBL/versions/p1F7qfcB/koreanpatch-fabric-mc1.21-1.5.0.jar"
           }
+        },
+        {
+          "id": "com.github.blur-server-address:blur-server-address:1.2.0",
+          "name": "Blur Server Address",
+          "type": "FabricMod",
+          "artifact": {
+            "size": 11418,
+            "url": "https://cdn.modrinth.com/data/559boQnq/versions/VPin7VZe/blurserveraddress-fabric-1.2.0%2Bmc1.21.2.jar"
+          }
         }
       ]
     }
