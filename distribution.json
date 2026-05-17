@@ -185,6 +185,15 @@
             "size": 11418,
             "url": "https://cdn.modrinth.com/data/559boQnq/versions/VPin7VZe/blurserveraddress-fabric-1.2.0%2Bmc1.21.2.jar"
           }
+        },
+        {
+          "id": "su.plo:plasmovoice:2.1.9",
+          "name": "Plasmo Voice",
+          "type": "FabricMod",
+          "artifact": {
+            "size": 12262201,
+            "url": "https://cdn.modrinth.com/data/1bZhdhsH/versions/hIqVVndg/plasmovoice-fabric-1.21.4-2.1.9.jar"
+          }
         }
       ]
     }
