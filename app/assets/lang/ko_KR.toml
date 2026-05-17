@@ -211,8 +211,8 @@ checking = "소식 확인 중"
 
 [js.landing.discord]
 loading = "게임 로딩 중.."
-joining = "Blue Zone 진입 중!"
-joined = "Blue Zone 전투 중!"
+joining = "캔디 크러쉬 진입 중!"
+joined = "캔디 크러쉬 진행 중!"
 
 [js.overlay]
 dismiss = "닫기"
