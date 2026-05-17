@@ -3222,6 +3222,35 @@ input:checked + .toggleSwitchSlider:before {
     cursor: pointer;
 }
 
+/* Resolution selector beside the mojang status. */
+#resolutionWrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+#resolutionWrapper .bot_label {
+    margin-right: 8px;
+}
+
+#resolutionSelect {
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+    font-family: 'Avenir Medium', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+}
+
+#resolutionSelect:hover,
+#resolutionSelect:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
 /* Icon which displays the status of the mojang services. */
 #mojang_status_icon {
     font-size: 30px;

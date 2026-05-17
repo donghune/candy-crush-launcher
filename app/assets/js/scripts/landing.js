@@ -1024,3 +1024,37 @@ async function loadNews(){
 
     return await promise
 }
+
+/* Resolution preset selector (1920x1080 / 1920x720). Persisted via ConfigManager. */
+;(function initResolutionSelector(){
+    const sel = document.getElementById('resolutionSelect')
+    if (!sel) return
+
+    const presets = [
+        { value: '1920x1080', w: 1920, h: 1080 },
+        { value: '1920x720',  w: 1920, h: 720  },
+    ]
+
+    const curW = ConfigManager.getGameWidth()
+    const curH = ConfigManager.getGameHeight()
+    const match = presets.find(p => p.w === curW && p.h === curH)
+    if (match) {
+        sel.value = match.value
+    } else {
+        // Persist the default preset so the saved config and the UI agree from launch.
+        const def = presets[0]
+        ConfigManager.setGameWidth(def.w)
+        ConfigManager.setGameHeight(def.h)
+        ConfigManager.save()
+        sel.value = def.value
+    }
+
+    sel.addEventListener('change', () => {
+        const chosen = presets.find(p => p.value === sel.value)
+        if (!chosen) return
+        ConfigManager.setGameWidth(chosen.w)
+        ConfigManager.setGameHeight(chosen.h)
+        ConfigManager.save()
+        loggerLanding.info(`Resolution set to ${chosen.w}x${chosen.h}`)
+    })
+})()
