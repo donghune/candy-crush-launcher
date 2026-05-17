@@ -40,7 +40,10 @@ jobs:
         run: npm install
 
       - name: Build Windows installer (NSIS x64)
-        run: npm run dist:win
+        # Call electron-builder directly with --publish never so it doesn't
+        # try to auto-publish on CI (which needs GH_TOKEN and races our own
+        # gh release upload step below).
+        run: npx --no-install electron-builder build -w --publish never
 
       - name: Normalize filenames (spaces -> hyphens, matches latest.yml)
         shell: pwsh
