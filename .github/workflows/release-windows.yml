@@ -1,0 +1,85 @@
+name: release-windows
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to attach artifacts to (must already exist, e.g. v1.3.3)'
+        required: true
+        default: 'v1.3.3'
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve release tag
+        id: tag
+        shell: pwsh
+        run: |
+          if ('${{ github.event_name }}' -eq 'push') {
+            $t = '${{ github.ref_name }}'
+          } else {
+            $t = '${{ github.event.inputs.tag }}'
+          }
+          "tag=$t" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          Write-Host "Resolved release tag: $t"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Windows installer (NSIS x64)
+        run: npm run dist:win
+
+      - name: Normalize filenames (spaces -> hyphens, matches latest.yml)
+        shell: pwsh
+        run: |
+          Get-ChildItem -Path dist -File | Where-Object { $_.Name -match ' ' } | ForEach-Object {
+            $new = $_.Name -replace ' ', '-'
+            Rename-Item -LiteralPath $_.FullName -NewName $new
+            Write-Host "$($_.Name) -> $new"
+          }
+          Write-Host "--- final dist/ contents ---"
+          Get-ChildItem -Path dist -File | Select-Object Name, Length
+
+      - name: Ensure release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh
+        run: |
+          $tag = '${{ steps.tag.outputs.tag }}'
+          gh release view $tag 2>$null
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "Release $tag does not exist — creating it."
+            gh release create $tag --title "Candy Crush Launcher $tag" --notes "Automated build via GitHub Actions."
+          } else {
+            Write-Host "Release $tag exists — uploading assets."
+          }
+
+      - name: Upload Windows artifacts to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh
+        run: |
+          $tag = '${{ steps.tag.outputs.tag }}'
+          $assets = Get-ChildItem -Path dist -File | Where-Object {
+            $_.Name -like "*.exe" -or
+            $_.Name -like "*.exe.blockmap" -or
+            $_.Name -eq "latest.yml"
+          } | ForEach-Object { $_.FullName }
+          if ($assets.Count -eq 0) {
+            throw "No artifacts to upload (expected *.exe, *.exe.blockmap, latest.yml)"
+          }
+          Write-Host "Uploading $($assets.Count) asset(s) to $tag"
+          gh release upload $tag $assets --clobber
