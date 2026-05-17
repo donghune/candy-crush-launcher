@@ -1032,7 +1032,7 @@ async function loadNews(){
 
     const presets = [
         { value: '1920x1080', w: 1920, h: 1080 },
-        { value: '1920x720',  w: 1920, h: 720  },
+        { value: '1280x720',  w: 1280, h: 720  },
     ]
 
     const curW = ConfigManager.getGameWidth()
