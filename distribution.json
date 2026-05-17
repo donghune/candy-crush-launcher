@@ -169,12 +169,12 @@
           }
         },
         {
-          "id": "io.github.koreanpatch:korean-chat-patch:1.5.0",
+          "id": "io.github.koreanpatch:korean-chat-patch:1.9.5",
           "name": "Korean Chat Patch",
           "type": "FabricMod",
           "artifact": {
-            "size": 181737,
-            "url": "https://cdn.modrinth.com/data/qyulnpBL/versions/p1F7qfcB/koreanpatch-fabric-mc1.21-1.5.0.jar"
+            "size": 595769,
+            "url": "https://cdn.modrinth.com/data/qyulnpBL/versions/LHVN4zQC/koreanpatch-fabric-1.9.5%2Bmc1.21.3.jar"
           }
         },
         {
