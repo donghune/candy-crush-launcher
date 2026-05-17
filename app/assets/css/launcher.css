@@ -2497,8 +2497,30 @@ input:checked + .toggleSwitchSlider:before {
     position: relative;
     top: 25px;
     display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
     line-height: 24px;
     left: 50px;
+}
+
+/* Row inside #left #content (player+mojang line, resolution line). */
+.bot_row {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.bot_row:last-child {
+    margin-bottom: 0;
+}
+
+/* Hide news entry button and social media links (per design). */
+#newsButton,
+#linkURL,
+#xURL,
+#instagramURL,
+#youtubeURL,
+#discordURL {
+    display: none !important;
 }
 #landingContainer > #lower > #center {
     position: relative;
