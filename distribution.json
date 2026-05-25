@@ -8,7 +8,7 @@
       "description": "Candy Crush event - Fabric 1.21.4",
       "icon": "https://raw.githubusercontent.com/donghune/candy-crush-launcher/master/app/assets/images/SealCircle.png",
       "version": "1.0.0",
-      "address": "100.104.65.26:25565",
+      "address": "candycrush.hxxnivers.com:25565",
       "minecraftVersion": "1.21.4",
       "mainServer": true,
       "autoconnect": true,
